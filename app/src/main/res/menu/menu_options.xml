@@ -5,6 +5,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".activities.MapsActivity">
 
+    <item
+        android:id="@+id/search"
+        android:icon="@drawable/search_bar"
+        android:paddingTop="50dp"
+        android:paddingBottom="0dp"
+        android:title=""
+        app:showAsAction="withText" />
+
     <item android:id="@+id/select_all"
         android:title="Select All"
         android:paddingTop="10dp"

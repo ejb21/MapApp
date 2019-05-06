@@ -110,18 +110,17 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu_options, menu);
 
-        MenuItem item = menu.getItem(0);
+        MenuItem item = menu.getItem(1);
         SpannableString s = new SpannableString("Select All");
         s.setSpan(new AlignmentSpan.Standard(Layout.Alignment.ALIGN_CENTER), 0, s.length(), 0);
         item.setTitle(s);
 
-        item = menu.getItem(1);
+        item = menu.getItem(2);
         s = new SpannableString("Deselect All");
         s.setSpan(new AlignmentSpan.Standard(Layout.Alignment.ALIGN_CENTER), 0, s.length(), 0);
         item.setTitle(s);
 
         mainMenu = menu;
-
         return true;
     }
 
@@ -159,12 +158,12 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         {
             case R.id.select_all:
                 selectAllTypes();
-                for (int i = 2; i < mainMenu.size(); i++) mainMenu.getItem(i).setIcon(R.drawable.radio_button_selected);
+                for (int i = 3; i < mainMenu.size(); i++) mainMenu.getItem(i).setIcon(R.drawable.radio_button_selected);
                 getCurrentPlaceLikelihoods();
                 return false;
             case R.id.deselect_all:
                 deselectAllTypes();
-                for (int i = 2; i < mainMenu.size(); i++) mainMenu.getItem(i).setIcon(R.drawable.radio_button);
+                for (int i = 3; i < mainMenu.size(); i++) mainMenu.getItem(i).setIcon(R.drawable.radio_button);
                 getCurrentPlaceLikelihoods();
                 return false;
             case R.id.accounting:
