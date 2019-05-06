@@ -1,0 +1,469 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu android:id="@+id/main_menu"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".activities.MapsActivity">
+
+    <item android:id="@+id/select_all"
+        android:title="Select All"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        app:showAsAction="withText"/>
+
+    <item android:id="@+id/deselect_all"
+        android:title="Deselect All"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        app:showAsAction="withText"/>
+
+    <item android:id="@+id/accounting"
+        android:title="Accounting"
+        android:icon="@drawable/radio_button_selected"
+        app:showAsAction="withText"/>
+
+    <item android:id="@+id/airport"
+        android:title="Airport"
+        android:icon="@drawable/radio_button_selected"
+        app:showAsAction="withText"/>
+
+    <item android:id="@+id/amusement_park"
+        android:title="Amusement Park"
+        android:icon="@drawable/radio_button_selected"
+        app:showAsAction="withText"/>
+
+    <item android:id="@+id/aquarium"
+        android:title="Aquarium"
+        android:icon="@drawable/radio_button_selected"
+        app:showAsAction="withText"/>
+
+    <item android:id="@+id/art_gallery"
+        android:title="Art Gallery"
+        android:icon="@drawable/radio_button_selected"
+        app:showAsAction="never"/>
+
+    <item android:id="@+id/atm"
+        android:title="ATM"
+        android:icon="@drawable/radio_button_selected"
+        app:showAsAction="never"/>
+
+    <item android:id="@+id/bakery"
+        android:title="Bakery"
+        android:icon="@drawable/radio_button_selected"
+        app:showAsAction="never"/>
+
+    <item android:id="@+id/bank"
+        android:title="Bank"
+        android:icon="@drawable/radio_button_selected"
+        app:showAsAction="never"/>
+
+    <item android:id="@+id/bar"
+        android:title="Bar"
+        android:icon="@drawable/radio_button_selected"
+        app:showAsAction="never"/>
+
+    <item android:id="@+id/beauty_salon"
+        android:title="Beauty Salon"
+        android:icon="@drawable/radio_button_selected"
+        app:showAsAction="never"/>
+
+    <item android:id="@+id/bicycle_store"
+        android:title="Bicycle Store"
+        android:icon="@drawable/radio_button_selected"
+        app:showAsAction="never"/>
+
+    <item android:id="@+id/book_store"
+        android:title="Book Store"
+        android:icon="@drawable/radio_button_selected"
+        app:showAsAction="never"/>
+
+    <item android:id="@+id/bowling_alley"
+        android:title="Bowling Alley"
+        android:icon="@drawable/radio_button_selected"
+        app:showAsAction="never"/>
+
+    <item android:id="@+id/bus_station"
+        android:title="Bus Station"
+        android:icon="@drawable/radio_button_selected"
+        app:showAsAction="never"/>
+
+    <item android:id="@+id/cafe"
+        android:title="Café"
+        android:icon="@drawable/radio_button_selected"
+        app:showAsAction="never"/>
+
+    <item android:id="@+id/campground"
+        android:title="Campground"
+        android:icon="@drawable/radio_button_selected"
+        app:showAsAction="never"/>
+
+    <item android:id="@+id/car_dealer"
+        android:title="Car Dealer"
+        android:icon="@drawable/radio_button_selected"
+        app:showAsAction="never"/>
+
+    <item android:id="@+id/car_rental"
+        android:title="Car Rental"
+        android:icon="@drawable/radio_button_selected"
+        app:showAsAction="never"/>
+
+    <item android:id="@+id/car_repair"
+        android:title="Car Repair"
+        android:icon="@drawable/radio_button_selected"
+        app:showAsAction="never"/>
+
+    <item android:id="@+id/car_wash"
+        android:title="Car Wash"
+        android:icon="@drawable/radio_button_selected"
+        app:showAsAction="never"/>
+
+    <item android:id="@+id/casino"
+        android:title="Casino"
+        android:icon="@drawable/radio_button_selected"
+        app:showAsAction="never"/>
+
+    <item android:id="@+id/cemetery"
+        android:title="Cemetery"
+        android:icon="@drawable/radio_button_selected"
+        app:showAsAction="never"/>
+
+    <item android:id="@+id/church"
+        android:title="Church"
+        android:icon="@drawable/radio_button_selected"
+        app:showAsAction="never"/>
+
+    <item android:id="@+id/city_hall"
+        android:title="City Hall"
+        android:icon="@drawable/radio_button_selected"
+        app:showAsAction="never"/>
+
+    <item android:id="@+id/clothing_store"
+        android:title="Clothing Store"
+        android:icon="@drawable/radio_button_selected"
+        app:showAsAction="never"/>
+
+    <item android:id="@+id/convenience_store"
+        android:title="Convenience Store"
+        android:icon="@drawable/radio_button_selected"
+        app:showAsAction="never"/>
+
+    <item android:id="@+id/courthouse"
+        android:title="Courthouse"
+        android:icon="@drawable/radio_button_selected"
+        app:showAsAction="never"/>
+
+    <item android:id="@+id/dentist"
+        android:title="Dentist"
+        android:icon="@drawable/radio_button_selected"
+        app:showAsAction="never"/>
+
+    <item android:id="@+id/department_store"
+        android:title="Department Store"
+        android:icon="@drawable/radio_button_selected"
+        app:showAsAction="never"/>
+
+    <item android:id="@+id/doctor"
+        android:title="Doctor"
+        android:icon="@drawable/radio_button_selected"
+        app:showAsAction="never"/>
+
+    <item android:id="@+id/electrician"
+        android:title="Electrician"
+        android:icon="@drawable/radio_button_selected"
+        app:showAsAction="never"/>
+
+    <item android:id="@+id/electronics_store"
+        android:title="Electronics Store"
+        android:icon="@drawable/radio_button_selected"
+        app:showAsAction="never"/>
+
+    <item android:id="@+id/embassy"
+        android:title="Embassy"
+        android:icon="@drawable/radio_button_selected"
+        app:showAsAction="never"/>
+
+    <item android:id="@+id/fire_station"
+        android:title="Fire Station"
+        android:icon="@drawable/radio_button_selected"
+        app:showAsAction="never"/>
+
+    <item android:id="@+id/florist"
+        android:title="Florist"
+        android:icon="@drawable/radio_button_selected"
+        app:showAsAction="never"/>
+
+    <item android:id="@+id/funeral_home"
+        android:title="Funeral Home"
+        android:icon="@drawable/radio_button_selected"
+        app:showAsAction="never"/>
+
+    <item android:id="@+id/furniture_store"
+        android:title="Furniture Store"
+        android:icon="@drawable/radio_button_selected"
+        app:showAsAction="never"/>
+
+    <item android:id="@+id/gas_station"
+        android:title="Gas Station"
+        android:icon="@drawable/radio_button_selected"
+        app:showAsAction="never"/>
+
+    <item android:id="@+id/gym"
+        android:title="Gym"
+        android:icon="@drawable/radio_button_selected"
+        app:showAsAction="never"/>
+
+    <item android:id="@+id/hair_care"
+        android:title="Hair Care"
+        android:icon="@drawable/radio_button_selected"
+        app:showAsAction="never"/>
+
+    <item android:id="@+id/hardware_store"
+        android:title="Hardware Store"
+        android:icon="@drawable/radio_button_selected"
+        app:showAsAction="never"/>
+
+    <item android:id="@+id/hindu_temple"
+        android:title="Hindu Temple"
+        android:icon="@drawable/radio_button_selected"
+        app:showAsAction="never"/>
+
+    <item android:id="@+id/home_goods_store"
+        android:title="Home Goods Store"
+        android:icon="@drawable/radio_button_selected"
+        app:showAsAction="never"/>
+
+    <item android:id="@+id/hospital"
+        android:title="Hospital"
+        android:icon="@drawable/radio_button_selected"
+        app:showAsAction="never"/>
+
+    <item android:id="@+id/insurance_agency"
+        android:title="Insurance Agency"
+        android:icon="@drawable/radio_button_selected"
+        app:showAsAction="never"/>
+
+    <item android:id="@+id/jewelry_store"
+        android:title="Jewelry Store"
+        android:icon="@drawable/radio_button_selected"
+        app:showAsAction="never"/>
+
+    <item android:id="@+id/laundry"
+        android:title="Laundry"
+        android:icon="@drawable/radio_button_selected"
+        app:showAsAction="never"/>
+
+    <item android:id="@+id/lawyer"
+        android:title="Lawyer"
+        android:icon="@drawable/radio_button_selected"
+        app:showAsAction="never"/>
+
+    <item android:id="@+id/library"
+        android:title="Library"
+        android:icon="@drawable/radio_button_selected"
+        app:showAsAction="never"/>
+
+    <item android:id="@+id/liquor_store"
+        android:title="Liquor Store"
+        android:icon="@drawable/radio_button_selected"
+        app:showAsAction="never"/>
+
+    <item android:id="@+id/local_government_office"
+        android:title="Local Government Office"
+        android:icon="@drawable/radio_button_selected"
+        app:showAsAction="never"/>
+
+    <item android:id="@+id/locksmith"
+        android:title="Locksmith"
+        android:icon="@drawable/radio_button_selected"
+        app:showAsAction="never"/>
+
+    <item android:id="@+id/lodging"
+        android:title="Lodging"
+        android:icon="@drawable/radio_button_selected"
+        app:showAsAction="never"/>
+
+    <item android:id="@+id/meal_delivery"
+        android:title="Meal Delivery"
+        android:icon="@drawable/radio_button_selected"
+        app:showAsAction="never"/>
+
+    <item android:id="@+id/meal_takeaway"
+        android:title="Meal Takeaway"
+        android:icon="@drawable/radio_button_selected"
+        app:showAsAction="never"/>
+
+    <item android:id="@+id/mosque"
+        android:title="Mosque"
+        android:icon="@drawable/radio_button_selected"
+        app:showAsAction="never"/>
+
+    <item android:id="@+id/movie_rental"
+        android:title="Movie Rental"
+        android:icon="@drawable/radio_button_selected"
+        app:showAsAction="never"/>
+
+    <item android:id="@+id/movie_theater"
+        android:title="Movie Theater"
+        android:icon="@drawable/radio_button_selected"
+        app:showAsAction="never"/>
+
+    <item android:id="@+id/moving_company"
+        android:title="Moving Company"
+        android:icon="@drawable/radio_button_selected"
+        app:showAsAction="never"/>
+
+    <item android:id="@+id/museum"
+        android:title="Museum"
+        android:icon="@drawable/radio_button_selected"
+        app:showAsAction="never"/>
+
+    <item android:id="@+id/night_club"
+        android:title="Night Club"
+        android:icon="@drawable/radio_button_selected"
+        app:showAsAction="never"/>
+
+    <item android:id="@+id/painter"
+        android:title="Painter"
+        android:icon="@drawable/radio_button_selected"
+        app:showAsAction="never"/>
+
+    <item android:id="@+id/park"
+        android:title="Park"
+        android:icon="@drawable/radio_button_selected"
+        app:showAsAction="never"/>
+
+    <item android:id="@+id/parking"
+        android:title="Parking"
+        android:icon="@drawable/radio_button_selected"
+        app:showAsAction="never"/>
+
+    <item android:id="@+id/pet_store"
+        android:title="Pet Store"
+        android:icon="@drawable/radio_button_selected"
+        app:showAsAction="never"/>
+
+    <item android:id="@+id/pharmacy"
+        android:title="Pharmacy"
+        android:icon="@drawable/radio_button_selected"
+        app:showAsAction="never"/>
+
+    <item android:id="@+id/physiotherapist"
+        android:title="Physiotherapist"
+        android:icon="@drawable/radio_button_selected"
+        app:showAsAction="never"/>
+
+    <item android:id="@+id/plumber"
+        android:title="Plumber"
+        android:icon="@drawable/radio_button_selected"
+        app:showAsAction="never"/>
+
+    <item android:id="@+id/police"
+        android:title="Police"
+        android:icon="@drawable/radio_button_selected"
+        app:showAsAction="never"/>
+
+    <item android:id="@+id/post_office"
+        android:title="Post Office"
+        android:icon="@drawable/radio_button_selected"
+        app:showAsAction="never"/>
+
+    <item android:id="@+id/real_estate_agency"
+        android:title="Real Estate Agency"
+        android:icon="@drawable/radio_button_selected"
+        app:showAsAction="never"/>
+
+    <item android:id="@+id/restaurant"
+        android:title="Restaurant"
+        android:icon="@drawable/radio_button_selected"
+        app:showAsAction="never"/>
+
+    <item android:id="@+id/roofing_contractor"
+        android:title="Roofing Contractor"
+        android:icon="@drawable/radio_button_selected"
+        app:showAsAction="never"/>
+
+    <item android:id="@+id/rv_park"
+        android:title="RV Park"
+        android:icon="@drawable/radio_button_selected"
+        app:showAsAction="never"/>
+
+    <item android:id="@+id/school"
+        android:title="School"
+        android:icon="@drawable/radio_button_selected"
+        app:showAsAction="never"/>
+
+    <item android:id="@+id/shoe_store"
+        android:title="Shoe Store"
+        android:icon="@drawable/radio_button_selected"
+        app:showAsAction="never"/>
+
+    <item android:id="@+id/shopping_mall"
+        android:title="Shopping Mall"
+        android:icon="@drawable/radio_button_selected"
+        app:showAsAction="never"/>
+
+    <item android:id="@+id/spa"
+        android:title="Spa"
+        android:icon="@drawable/radio_button_selected"
+        app:showAsAction="never"/>
+
+    <item android:id="@+id/stadium"
+        android:title="Stadium"
+        android:icon="@drawable/radio_button_selected"
+        app:showAsAction="never"/>
+
+    <item android:id="@+id/storage"
+        android:title="Storage"
+        android:icon="@drawable/radio_button_selected"
+        app:showAsAction="never"/>
+
+    <item android:id="@+id/store"
+        android:title="Store"
+        android:icon="@drawable/radio_button_selected"
+        app:showAsAction="never"/>
+
+    <item android:id="@+id/subway_station"
+        android:title="Subway Station"
+        android:icon="@drawable/radio_button_selected"
+        app:showAsAction="never"/>
+
+    <item android:id="@+id/supermarket"
+        android:title="Supermarket"
+        android:icon="@drawable/radio_button_selected"
+        app:showAsAction="never"/>
+
+    <item android:id="@+id/synagogue"
+        android:title="Synagogue"
+        android:icon="@drawable/radio_button_selected"
+        app:showAsAction="never"/>
+
+    <item android:id="@+id/taxi_stand"
+        android:title="Taxi Stand"
+        android:icon="@drawable/radio_button_selected"
+        app:showAsAction="never"/>
+
+    <item android:id="@+id/train_station"
+        android:title="Train Station"
+        android:icon="@drawable/radio_button_selected"
+        app:showAsAction="never"/>
+
+    <item android:id="@+id/transit_station"
+        android:title="Transit Station"
+        android:icon="@drawable/radio_button_selected"
+        app:showAsAction="never"/>
+
+    <item android:id="@+id/travel_agency"
+        android:title="Travel Agency"
+        android:icon="@drawable/radio_button_selected"
+        app:showAsAction="never"/>
+
+    <item android:id="@+id/veterinary_care"
+        android:title="Veterinary Care"
+        android:icon="@drawable/radio_button_selected"
+        app:showAsAction="never"/>
+
+    <item android:id="@+id/zoo"
+        android:title="Zoo"
+        android:icon="@drawable/radio_button_selected"
+        app:showAsAction="never"/>
+</menu>
