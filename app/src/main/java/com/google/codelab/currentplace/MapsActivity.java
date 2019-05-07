@@ -10,6 +10,8 @@ import androidx.core.content.ContextCompat;
 
 import android.annotation.SuppressLint;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
+import android.graphics.Typeface;
 import android.location.Location;
 import android.location.LocationManager;
 import android.os.Build;
@@ -18,13 +20,16 @@ import android.text.Layout;
 import android.text.SpannableString;
 import android.text.style.AlignmentSpan;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.common.util.ArrayUtils;
@@ -36,12 +41,14 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.libraries.places.api.Places;
+import com.google.android.libraries.places.api.model.OpeningHours;
 import com.google.android.libraries.places.api.model.Place;
 import com.google.android.libraries.places.api.model.PlaceLikelihood;
 import com.google.android.libraries.places.api.net.FindCurrentPlaceRequest;
@@ -67,17 +74,23 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     private FusedLocationProviderClient mFusedLocationProviderClient;
 
     private Location mLastKnownLocation;
-
     private final LatLng mDefaultLocation = new LatLng(41.234802, -77.020525);
     private static final int DEFAULT_ZOOM = 17;
     private static final int PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION = 1;
     private boolean mLocationPermissionGranted;
 
-    private static final int M_MAX_ENTRIES = 25;
+    private static final int M_MAX_ENTRIES = 60;
     private String[] mLikelyPlaceNames;
-    private String[] mLikelyPlaceAddresses;
-    private String[] mLikelyPlaceAttributions;
     private LatLng[] mLikelyPlaceLatLngs;
+    private String[] mLikelyPlaceAddresses;
+    private String[] mLikelyPlaceWebsites;
+    private String[] mLikelyPlaceTypes;
+    private String[] mLikelyPlacePhones;
+    private double[] mLikelyPlaceRatings;
+    private int[] mLikelyPlaceUserRatingsTotals;
+    private int[] mLikelyPlacePriceLevels;
+    private OpeningHours[] mLikelyPlaceOpeningHours;
+    private String[] mLikelyPlaceAttributions;
     public String[] mLikelyPlaceNamesClean;
 
     private List<Place.Type> enabledTypes = new ArrayList<>();
@@ -730,6 +743,25 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         }
     }
 
+    public static String toTitleCase(String input)
+    {
+        StringBuilder titleCase = new StringBuilder();
+        boolean nextTitleCase = true;
+
+        for (char c : input.toCharArray())
+        {
+            if (Character.isSpaceChar(c)) nextTitleCase = true;
+            else if (nextTitleCase)
+            {
+                c = Character.toTitleCase(c);
+                nextTitleCase = false;
+            }
+            titleCase.append(c);
+        }
+
+        return titleCase.toString();
+    }
+
     @RequiresApi(api = Build.VERSION_CODES.O)
     private void getCurrentPlaceLikelihoods()
     {
@@ -751,10 +783,17 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
                 int i = 0;
                 mLikelyPlaceNames = new String[count];
-                mLikelyPlaceAddresses = new String[count];
-                mLikelyPlaceAttributions = new String[count];
                 mLikelyPlaceLatLngs = new LatLng[count];
-                Collection<Place.Type> typeCollection;
+                mLikelyPlaceAddresses = new String[count];
+                mLikelyPlaceWebsites = new String[count];
+                mLikelyPlaceTypes = new String[count];
+                mLikelyPlacePhones = new String[count];
+                mLikelyPlaceRatings = new double[count];
+                mLikelyPlaceUserRatingsTotals = new int[count];
+                mLikelyPlacePriceLevels = new int[count];
+                mLikelyPlaceOpeningHours = new OpeningHours[count];
+                mLikelyPlaceAttributions = new String[count];
+                mLikelyPlaceNamesClean = new String[count];
                 Place currPlace;
 
                 for (PlaceLikelihood placeLikelihood : response.getPlaceLikelihoods())
@@ -769,9 +808,17 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                     {
                         if (currPlace.getName() != null) mLikelyPlaceNames[i] = currPlace.getName();
                         else mLikelyPlaceNames[i] = " ";
-                        mLikelyPlaceAddresses[i] = currPlace.getAddress();
+                        if (currPlace.getAddress() != null) mLikelyPlaceAddresses[i] = currPlace.getAddress();
+                        if (currPlace.getWebsiteUri() != null) mLikelyPlaceWebsites[i] = currPlace.getWebsiteUri().toString();
+                        if (currPlace.getTypes() != null) mLikelyPlaceTypes[i] = toTitleCase(currPlace.getTypes().get(0).toString().toLowerCase().replace('_', ' '));
+                        if (currPlace.getPhoneNumber() != null) mLikelyPlacePhones[i] = currPlace.getPhoneNumber();
+                        if (currPlace.getRating() != null) mLikelyPlaceRatings[i] = currPlace.getRating();
+                        if (currPlace.getUserRatingsTotal() != null) mLikelyPlaceUserRatingsTotals[i] = currPlace.getUserRatingsTotal();
+                        if (currPlace.getPriceLevel() != null) mLikelyPlacePriceLevels[i] = currPlace.getPriceLevel();
+                        if (currPlace.getOpeningHours() != null) mLikelyPlaceOpeningHours[i] = currPlace.getOpeningHours();
+                        if (currPlace.getLatLng() != null) mLikelyPlaceLatLngs[i] = currPlace.getLatLng();
                         mLikelyPlaceAttributions[i] = (currPlace.getAttributions() == null) ? null : String.join(" ", currPlace.getAttributions());
-                        mLikelyPlaceLatLngs[i] = currPlace.getLatLng();
+
                         String currLatLng = (mLikelyPlaceLatLngs[i] == null) ? "" : mLikelyPlaceLatLngs[i].toString();
                         i++;
                     }
@@ -818,9 +865,49 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         {
             mMap.clear();
             LatLng markerLatLng = mLikelyPlaceLatLngs[position];
-            String markerSnippet = mLikelyPlaceAddresses[position];
-            if (mLikelyPlaceAttributions[position] != null) markerSnippet = markerSnippet + "\n" + mLikelyPlaceAttributions[position];
-            mMap.addMarker(new MarkerOptions().title(mLikelyPlaceNames[position]).position(markerLatLng).snippet(markerSnippet));
+            String markerSnippet = "";
+            if (mLikelyPlaceAddresses[position] != null) markerSnippet = mLikelyPlaceAddresses[position];
+            if (mLikelyPlaceWebsites[position] != null) markerSnippet += "\n" + mLikelyPlaceWebsites[position];
+            if (mLikelyPlacePhones[position] != null) markerSnippet += "\n" + mLikelyPlacePhones[position];
+            if (mLikelyPlaceTypes[position] != null) markerSnippet += "\n" + mLikelyPlaceTypes[position];
+
+            if (mLikelyPlaceUserRatingsTotals[position] > 0)
+                markerSnippet += "\nRated " + mLikelyPlaceRatings[position] + " out of 5.0 stars (based on " + mLikelyPlaceUserRatingsTotals[position] + " reviews)\n";
+            else markerSnippet += "\nNo user ratings";
+
+            for (int x = 0; x < mLikelyPlacePriceLevels[position]; x++)
+                markerSnippet += "$";
+
+            mMap.addMarker(new MarkerOptions().title(mLikelyPlaceNames[position]).position(markerLatLng).snippet(markerSnippet)).showInfoWindow();
+
+            mMap.setInfoWindowAdapter(new GoogleMap.InfoWindowAdapter()
+            {
+                @Override
+                public View getInfoWindow(Marker arg0) { return null; }
+
+                @Override
+                public View getInfoContents(Marker marker)
+                {
+                    LinearLayout info = new LinearLayout(getApplicationContext());
+                    info.setOrientation(LinearLayout.VERTICAL);
+
+                    TextView title = new TextView(getApplicationContext());
+                    title.setTextColor(Color.BLACK);
+                    title.setGravity(Gravity.CENTER);
+                    title.setTypeface(null, Typeface.BOLD);
+                    title.setText(marker.getTitle());
+
+                    TextView snippet = new TextView(getApplicationContext());
+                    snippet.setTextColor(Color.GRAY);
+                    snippet.setText(marker.getSnippet());
+
+                    info.addView(title);
+                    info.addView(snippet);
+
+                    return info;
+                }
+            });
+
             mMap.moveCamera(CameraUpdateFactory.newLatLng(markerLatLng));
         }
     };
