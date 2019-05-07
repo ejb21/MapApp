@@ -29,6 +29,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.PopupMenu;
 import android.widget.TextView;
 
 import com.google.android.gms.common.api.ApiException;
@@ -41,6 +42,7 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MapStyleOptions;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
@@ -64,8 +66,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
-public class MapsActivity extends AppCompatActivity implements OnMapReadyCallback
-{
+public class MapsActivity extends AppCompatActivity implements OnMapReadyCallback, PopupMenu.OnMenuItemClickListener {
     private GoogleMap mMap;
 
     private static final String TAG = "MapsActivity";
@@ -928,5 +929,34 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         location.setLongitude(longi);
 
         getCurrentPlaceLikelihoods();
+    }
+
+    public void showPopup(View v)
+    {
+        PopupMenu popup = new PopupMenu(this, v);
+        popup.setOnMenuItemClickListener(this);
+        MenuInflater inflater = popup.getMenuInflater();
+        inflater.inflate(R.menu.themes, popup.getMenu());
+        popup.show();
+    }
+
+    @Override
+    public boolean onMenuItemClick(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.default_theme:
+                mMap.setMapStyle(MapStyleOptions.loadRawResourceStyle(this, R.raw.default_theme));
+                return true;
+            case R.id.black_theme:
+                mMap.setMapStyle(MapStyleOptions.loadRawResourceStyle(this, R.raw.black_theme));
+                return true;
+            case R.id.silver_theme:
+                mMap.setMapStyle(MapStyleOptions.loadRawResourceStyle(this, R.raw.silver_theme));
+                return true;
+            case R.id.blue_theme:
+                mMap.setMapStyle(MapStyleOptions.loadRawResourceStyle(this, R.raw.blue_theme));
+                return true;
+            default:
+                return false;
+        }
     }
 }
